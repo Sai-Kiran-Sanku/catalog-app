@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CatalogHub
 
-## Getting Started
+Dynamic multi-category product catalog built for a Frontend Developer assignment using Next.js.
 
-First, run the development server:
+Live Demo: https://multicategory-catalog.netlify.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Overview
+
+This project renders a responsive catalog from a shared JSON dataset. The home page groups products by category and shows item previews, while each product links to a dedicated detail page that dynamically renders all category-specific attributes from `itemprops`.
+
+## Features
+
+- Multi-category home screen with clearly separated sections
+- Category overview cards with preview images and item counts
+- Responsive product grid for mobile, tablet, and desktop
+- Dynamic item detail pages using Next.js App Router
+- Attribute rendering driven directly from JSON `itemprops`
+- Smooth in-page navigation and polished hover/focus states
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+
+## Data Format
+
+The app uses the provided JSON structure:
+
+```json
+{
+  "itemname": "Product Name",
+  "category": "Category Name",
+  "image": "https://example.com/image.jpg",
+  "itemprops": [
+    { "label": "Property Name", "value": "Property Value" }
+  ]
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Main dataset:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `app/data/data.json`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```text
+app/
+  components/
+    CategoryCard.tsx
+    Header.tsx
+    ItemCard.tsx
+    PropertyRow.tsx
+  data/
+    data.json
+  item/[id]/
+    page.tsx
+  globals.css
+  layout.tsx
+  page.tsx
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Local Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Install dependencies and start the dev server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm install
+npm run dev
+```
 
-## Deploy on Vercel
+Open `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Validation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run build
+```
+
+## Deployment
+
+This app is compatible with standard Next.js hosting.
+
+- Build command: `npm run build`
+- Start command: `npm start`
+
+For Netlify, deploy it as a Next.js application rather than a static export.
+
+## Assignment Coverage
+
+- Home screen displays all categories
+- Each category shows item previews
+- Users can navigate to a dedicated item detail page
+- Detail page shows image, item name, category, and all dynamic properties
+- Layout is responsive across screen sizes
+- Data is rendered from the provided JSON format
